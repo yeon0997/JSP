@@ -20,10 +20,10 @@
 		out.print(date + "<br>");
 		out.print(date + "<br>");
 
-		int hour = date.getHours();
-		int min = date.getMinutes();
-		int sec = date.getSeconds();
-		out.print(hour + "<br>");
+		//int hour = date.getHours();
+		//int min = date.getMinutes();
+		//int sec = date.getSeconds();
+		//out.print(hour + "<br>");
 	%>
 	<%
 		Calendar cal = Calendar.getInstance();
