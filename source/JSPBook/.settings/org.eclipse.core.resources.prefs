@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//src/ch04/com/dao/Person.java=UTF-8
+encoding//src/ch12/com/filter/AuthenFilter.java=UTF-8
+encoding//src/ch12/com/filter/Interceptor.java=UTF-8
