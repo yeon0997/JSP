@@ -7,7 +7,7 @@
 <link rel="stylesheet"
 	  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>홈</title>
 </head>
 <body>
 	<%@ include file = "menu.jsp" %>
@@ -29,6 +29,7 @@
 			<h3><%= tagline %></h3>
 			<!-- 접속시간 -->
 			<%
+				response.setIntHeader("Refresh", 5);
 				Date day = new java.util.Date();
 				String am_pm;
 				int hour = day.getHours();
@@ -42,6 +43,8 @@
 				}
 				String CT = hour + " : " + minute + " : " + second + " " + am_pm;
 				out.println("현재 접속시각 : " + CT + "\n");
+				
+				response.setIntHeader("refresh", 1);
 			%>
 		</div>
 	</div>
