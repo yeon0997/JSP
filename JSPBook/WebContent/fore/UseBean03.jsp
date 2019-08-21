@@ -7,8 +7,8 @@
 <title>action tag usebean</title>
 </head>
 <body>
-	<jsp:useBean id="person" class = "dao.Person" scope = "request" />
+<%--<jsp:useBean id="person" class = "dao.Person" scope = "request" />
 	<p>아이디 : <%=person.getId() %></p>
-	<p>이  름 : <%=person.getName() %>
+	<p>이  름 : <%=person.getName() %> --%>	
 </body>
 </html>

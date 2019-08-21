@@ -13,7 +13,7 @@
 <body>
 <head>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	href="./resources/css/bootstrap.min.css" />
 <title>상품 목록</title>
 </head>
 <body>
@@ -35,6 +35,7 @@
 					Product product = listOfProducts.get(i);
 			%>
 			<div class="col-md-4">
+				<img src ="./resources/images/<%=product.getFilename()%>" style="width:100%">
 				<h3><%=product.getPname()%></h3>
 				<p><%=product.getDescription()%><p>
 				<%=product.getUnitPrice()%>원

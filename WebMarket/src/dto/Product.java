@@ -13,6 +13,7 @@ public class Product implements Serializable {
 	private String category;
 	private long unitsInStock;
 	private String condition;
+	private String filename;
 	
 	public Product() {
 		super();
@@ -22,9 +23,6 @@ public class Product implements Serializable {
 		this.productId = productId;
 		this.pname = pname;
 		this.unitPrice = unitPrice;
-		
-		
-		
 	}
 
 	public String getProductId() {
@@ -93,5 +91,13 @@ public class Product implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 }
