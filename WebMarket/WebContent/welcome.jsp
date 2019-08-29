@@ -4,17 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <meta charset="UTF-8">
-<title>홈</title>
+<title>home</title>
 </head>
 <body>
 	<%@ include file = "menu.jsp" %>
 	<%! String greeting = "웹 쇼핑몰에 오신 것을 환영합니다";
 		String tagline = "WELCOME TO WEB MARKET";
 	%>
-	
 	<div class = "jumbotron">
 		<div class = "container">
 			<h1 class = "display-3">
@@ -22,8 +20,6 @@
 			</h1>
 		</div>
 	</div>
-	
-
 	<div class = "container">
 		<div class = "text-center">
 			<h3><%= tagline %></h3>
@@ -38,7 +34,7 @@
 				if (hour / 12 == 0){
 					am_pm = "AM";
 				} else{
-					am_pm = "pm";
+					am_pm = "PM";
 					hour = hour - 12;
 				}
 				String CT = hour + " : " + minute + " : " + second + " " + am_pm;
@@ -48,7 +44,6 @@
 			%>
 		</div>
 	</div>
-	
 	<!-- footer가 위치하는 부분 -->
 	<%@ include file = "footer.jsp" %>
 </body>

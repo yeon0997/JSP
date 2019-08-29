@@ -12,6 +12,8 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="./welcome.jsp">Home</a>
 				<a class="navbar-brand" href="./products.jsp">Product</a>
+				<a class="navbar-brand" href="./addProduct.jsp">Add</a>
+				<a class="navbar-brand" href="./cart.jsp">Cart</a>
 			</div>
 		</div>
 	</nav>
