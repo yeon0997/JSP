@@ -10,11 +10,11 @@
 	Cookie zipCode = new Cookie("Shipping_zipCode", URLEncoder.encode(request.getParameter("zipCode"), "utf-8"));
 	Cookie addressName = new Cookie("Shipping_addressName", URLEncoder.encode(request.getParameter("addressName"), "utf-8"));
 
-	cartId.setMaxAge(365 * 24 * 60 * 60);
-	name.setMaxAge(365 * 24 * 60 * 60);
-	zipCode.setMaxAge(365 * 24 * 60 * 60);
-	country.setMaxAge(365 * 24 * 60 * 60);
-	addressName.setMaxAge(365 * 24 * 60 * 60);
+	cartId.setMaxAge(365 * 24 * 60);
+	name.setMaxAge(365 * 24 * 60);
+	zipCode.setMaxAge(365 * 24 * 60);
+	country.setMaxAge(365 * 24 * 60);
+	addressName.setMaxAge(365 * 24 * 60);
 
 	response.addCookie(cartId);
 	response.addCookie(name);
