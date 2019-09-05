@@ -1,34 +1,53 @@
 package filter;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.util.*;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+import javafx.scene.input.DataFormat;
 
 public class LogFilter implements Filter {
-	
-	public void inin(FilterConfig config) throws ServletException{
-			System.out.println("WebMarket ÃÊ±âÈ­...");
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		
+		System.out.println("WebMarket ì´ˆê¸°í™”...");
+		
 	}
 
-	public void doFilter(ServletRequest request,ServletResponse response,FilterChain chain)
-	throws java.io.IOException, ServletException {
-		System.out.println("Á¢¼ÓÇÑ Å¬¶óÀÌ¾ğÆ® IP : " + request.getRemoteAddr());
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		
+		System.out.println("ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸ IP : " + request.getRemoteAddr());
 		long start = System.currentTimeMillis();
-		System.out.println("Á¢±ÙÇÑ url °æ·Î : " + getURLPath(request));
-		System.out.println("¿äÃ» Ã³¸® ½ÃÀÛ ½Ã°¢ : " + getCurrentTime());
+		System.out.println("ì ‘ê·¼í•œ URL ê²½ë¡œ : " + getURLPath(request));
+		System.out.println("ìš”ì²­ ì²˜ë¦¬ ì‹œì‘ ì‹œê°„ : " + getCurrentTime());
 		chain.doFilter(request, response);
 		
 		long end = System.currentTimeMillis();
-		System.out.println("¿äÃ» Ã³¸® Á¾·á ½Ã°¢ : " + getCurrentTime());
-		System.out.println("¿äÃ» Ã³¸® ¼Ò¿ä ½Ã°¢ : " + (end-start)+ "ms ");
-		System.out.println("========================================================");
+		System.out.println("ìš”ì²­ ì²˜ë¦¬ ì¢…ë£Œ ì‹œê° : " + getCurrentTime());
+		System.out.println("ìš”ì²­ ì²˜ë¦¬ ì†Œìš” ì‹œê° : " + (end-start)+"ms");
+		System.out.println("============================================");
 	}
-	public void destroy() {}
 
 
+	@Override
+	public void destroy() {
+
+	}
+	
 	private String getURLPath(ServletRequest request) {
+
 		HttpServletRequest req;
 		String currentPath="";
 		String queryString="";
@@ -36,15 +55,18 @@ public class LogFilter implements Filter {
 			req = (HttpServletRequest)request;
 			currentPath = req.getRequestURI();
 			queryString = req.getQueryString();
-			queryString = queryString == null ? "" : "?" + queryString;
+			queryString = queryString == null? "": "?"+queryString;
 		}
-		return currentPath+queryString;
-		}
-	
+		return currentPath + queryString;
+		
+	}
+
 	private String getCurrentTime() {
 		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTimeInMillis(System.currentTimeMillis());
-		return formatter.format(calendar.getTime());
+		Calendar calender = Calendar.getInstance();
+		calender.setTimeInMillis(System.currentTimeMillis());
+		return formatter.format(calender.getTime());
 	}
+
+	
 }

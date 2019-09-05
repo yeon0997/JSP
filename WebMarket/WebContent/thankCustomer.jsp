@@ -1,32 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ page import="java.net.URLDecoder"%>
+<%@page import="java.io.Writer"%>
+<%@page import="com.sun.org.apache.bcel.internal.generic.CPInstruction"%>
+<%@page import="java.net.URLDecoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<meta charset="UTF-8">
+<link rel="stylesheet"	href="./resources/css/bootstrap.min.css">
 <title>주문 완료</title>
 </head>
 <body>
+
 	<%
-		String shipping_cartId = "";
-		String shipping_name = "";
-		String shipping_shippingDate = "";
-		String shipping_country = "";
-		String shipping_zipCode = "";
-		String shipping_addressName = "";		
-
-		Cookie[] cookies = request.getCookies();
-
-		if (cookies != null) {
-			for (int i = 0; i < cookies.length; i++) {
-				Cookie thisCookie = cookies[i];
-				String n = thisCookie.getName();
-				if (n.equals("Shipping_cartId"))
-					shipping_cartId = URLDecoder.decode((thisCookie.getValue()), "utf-8");
-				if (n.equals("Shipping_shippingDate"))
-					shipping_shippingDate = URLDecoder.decode((thisCookie.getValue()), "utf-8");
-			}
+		
+	String shipping_cartId =""; 
+	String shipping_name =""; 
+	String shipping_shippingDate =""; 
+	String shipping_country =""; 
+	String shipping_zipCode =""; 
+	String shipping_addressName ="";
+	
+	Cookie[] cookies = request.getCookies();
+	
+	if(cookies != null){
+		for(int i=0; i<cookies.length; i++){
+			Cookie thisCookies = cookies[i];
+			String n = thisCookies.getName();
+			if(n.equals("Shipping_cartId"))
+				shipping_cartId = URLDecoder.decode(thisCookies.getValue(),"utf-8");
+			if(n.equals("Shipping_shippingDate"))
+				shipping_shippingDate = URLDecoder.decode(thisCookies.getValue(),"utf-8");
 		}
+	}
 	%>
 	<jsp:include page="menu.jsp" />
 	<div class="jumbotron">
@@ -42,40 +48,44 @@
 	<div class="container">
 		<p><a href="./products.jsp" class="btn btn-secondary"> &laquo; 상품 목록</a>
 	</div>
+
 </body>
 </html>
+
 <%
+
 	session.invalidate();
 
-	for (int i = 0; i < cookies.length; i++) {
-		Cookie thisCookie = cookies[i];
-		String n = thisCookie.getName();
-		if (n.equals("Customer_Id"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Customer_name"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Customer_phoneNumber"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Customer_country"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Customer_zipCode"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Customer_addressName"))
-			thisCookie.setMaxAge(0);
-
-		if (n.equals("Shipping_cartId"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Shipping_name"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Shipping_shippingDate"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Shipping_country"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Shipping_zipCode"))
-			thisCookie.setMaxAge(0);
-		if (n.equals("Shipping_addressName"))
-			thisCookie.setMaxAge(0);
+	for(int i=0; i<cookies.length; i++){
+	 	Cookie thisCookies = cookies[i];
+		String n = thisCookies.getName(); 
+		if(n.equals("Customer_Id"))
+			thisCookies.setMaxAge(0);
+		if(n.equals("Customer_name"))
+			thisCookies.setMaxAge(0);
+		if(n.equals("Customer_phoneNumber"))
+			thisCookies.setMaxAge(0);
+		if(n.equals("Customer_country"))
+			thisCookies.setMaxAge(0);
+		if(n.equals("Customer_zipCode"))
+			thisCookies.setMaxAge(0);
+		if(n.equals("Customer_addressName"))
+			thisCookies.setMaxAge(0);
+	
+		if(n.equals("Shipping_cartId"))
+			thisCookies.setMaxAge(0);	
+		if(n.equals("Shipping_name"))
+			thisCookies.setMaxAge(0);	
+		if(n.equals("Shipping_shippingDate"))
+			thisCookies.setMaxAge(0);	
+		if(n.equals("Shipping_country"))
+			thisCookies.setMaxAge(0);	
+		if(n.equals("Shipping_zipCode"))
+			thisCookies.setMaxAge(0);	
+		if(n.equals("Shipping_addressName"))
+			thisCookies.setMaxAge(0);	
 		
-		response.addCookie(thisCookie);
-	}
+		response.addCookie(thisCookies);
+}
+
 %>

@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import dto.Product;
 
 public class ProductRepository {
-
+	
 	private ArrayList<Product> listOfProducts = new ArrayList<Product>();
 	private static ProductRepository instance = new ProductRepository();
 
-	public static ProductRepository getInstance() {
-		return instance;
-	}
-	
+	public static ProductRepository getInstance(){  //get메소드(상품 돌려줌)
+		return instance;   //생성자를 받은 인스턴스
+	} 
+
 	public ProductRepository() {
 		Product phone = new Product("P1234", "iPhone 6s", 800000);
 		phone.setDescription("4.7-inch, 1334X750 Renina HD display, 8-megapixel iSight Camera");
@@ -20,15 +20,15 @@ public class ProductRepository {
 		phone.setManufacturer("Apple");
 		phone.setUnitsInStock(1000);
 		phone.setCondition("New");
-		phone.setFilename("P1234.jpg");
+		phone.setFilename("P1234.png");
 
-		Product notebook = new Product("P1235", "LG PC �׷�", 1500000);
+		Product notebook = new Product("P1235", "LG PC 그램", 1500000);
 		notebook.setDescription("13.3-inch, IPS LED display, 5rd Generation Intel Core processors");
 		notebook.setCategory("Notebook");
 		notebook.setManufacturer("LG");
 		notebook.setUnitsInStock(1000);
 		notebook.setCondition("Refurbished");
-		notebook.setFilename("P1235.jpg");
+		notebook.setFilename("P1235.png");
 
 		Product tablet = new Product("P1236", "Galaxy Tab S", 900000);
 		tablet.setDescription("212.8*125.6*6.6mm,  Super AMOLED display, Octa-Core processor");
@@ -36,7 +36,7 @@ public class ProductRepository {
 		tablet.setManufacturer("Samsung");
 		tablet.setUnitsInStock(1000);
 		tablet.setCondition("Old");
-		tablet.setFilename("P1236.jpg");
+		tablet.setFilename("P1236.png");
 
 		listOfProducts.add(phone);
 		listOfProducts.add(notebook);
@@ -47,12 +47,12 @@ public class ProductRepository {
 		return listOfProducts;
 	}
 	
-	public Product getProductById(String productId){
+	public Product getProductById(String productId) {
 		Product productById = null;
-		
-		for(int i = 0; i < listOfProducts.size(); i++) {
+
+		for (int i = 0; i < listOfProducts.size(); i++) {
 			Product product = listOfProducts.get(i);
-			if(product != null && product.getProductId() != null && product.getProductId().equals(productId)) {
+			if (product != null && product.getProductId() != null && product.getProductId().equals(productId)) {
 				productById = product;
 				break;
 			}
@@ -60,8 +60,7 @@ public class ProductRepository {
 		return productById;
 	}
 	
-	public void addProduct(Product product) {
+	public void addProduct(Product product) { //set 메소드(상품등록)
 		listOfProducts.add(product);
 	}
-	
 }

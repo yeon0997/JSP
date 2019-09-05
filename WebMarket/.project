@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>WebMarket</name>
+	<name>webMarket</name>
 	<comment></comment>
 	<projects>
+		<project>jstl-1.2</project>
+		<project>ojdbc6</project>
+		<project>cos</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -3,8 +3,9 @@ package dto;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-	private static final long serialVersionUID = -4247700572038677000L;
-	
+
+	private static final long serialVersionUID = -4274700572038677000L;
+
 	private String productId;
 	private String pname;
 	private Integer unitPrice;
@@ -15,11 +16,11 @@ public class Product implements Serializable {
 	private String condition;
 	private String filename;
 	private int quantity;
-	
+
 	public Product() {
 		super();
 	}
-	
+
 	public Product(String productId, String pname, Integer unitPrice) {
 		this.productId = productId;
 		this.pname = pname;
@@ -30,16 +31,16 @@ public class Product implements Serializable {
 		return productId;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-
 	public String getPname() {
 		return pname;
 	}
 
 	public void setPname(String pname) {
 		this.pname = pname;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
 	public Integer getUnitPrice() {
@@ -90,18 +91,6 @@ public class Product implements Serializable {
 		this.condition = condition;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public String getFilename() {
 		return filename;
 	}
@@ -109,4 +98,13 @@ public class Product implements Serializable {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
 }

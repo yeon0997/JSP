@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@page import="java.sql.*" %>
-<%@include file="dbconn.jsp" %>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file = "dbconn.jsp" %>
+
 <%
+
 	String productId = request.getParameter("id");
 
 	PreparedStatement pstmt = null;
@@ -15,17 +18,16 @@
 	if(rs.next()){
 		sql = "delete from product where p_id = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, productId);
+		pstmt.setString(1,productId);
 		pstmt.executeUpdate();
-	} else
-		out.println("일치하는 상품이 없습니다");
+	}else {
+		out.println("일치하는 상품이 없습니다.");
+	}
 	
-	if(rs != null)
-		rs.close();
-	if(pstmt != null)
-		pstmt.close();
-	if(conn != null)
-		conn.close();
+	if(rs != null) rs.close();
+	if(pstmt != null) pstmt.close();
+	if(conn != null) conn.close();
 	
 	response.sendRedirect("editProduct.jsp?edit=delete");
+	
 %>
