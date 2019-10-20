@@ -42,7 +42,7 @@
 		<filter-class>filter.LogFileFilter</filter-class>
 		<init-param>
 			<param-name>filename</param-name>
-			<param-value>c:\\data\\webmarket.log</param-value>
+			<param-value>d:\\data\\webmarket.log</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

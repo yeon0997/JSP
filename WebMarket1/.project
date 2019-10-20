@@ -3,6 +3,9 @@
 	<name>webMarket</name>
 	<comment></comment>
 	<projects>
+		<project>jstl-1.2</project>
+		<project>ojdbc6</project>
+		<project>cos</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

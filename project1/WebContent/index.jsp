@@ -1,14 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>index</title>
-    <link rel="stylesheet" href="CSS/index.css">
+<meta charset="UTF-8">
+<title>index</title>
+<link rel="stylesheet" type="text/css" href="css/index.css?v=3">
+<link rel="stylesheet" type="text/css" href="css/todo.css?v=3">
 </head>
 <body>
-    <header>
+	<header>
         <div id="header">
             <button id="logo">Secretary</button>
         </div>
@@ -50,7 +51,6 @@
             elmnt.style.backgroundColor = color;
         }
         document.getElementById("defalutOpen").click();
-
     </script>
 <!-- SCCRIPT END -->
 </body>
