@@ -1,6 +1,6 @@
 package dto;
 
-public class todolist {
+public class Todolist {
 	
 	private static final long serialVersionUID = -4274700572038677000L;
 	
@@ -10,7 +10,7 @@ public class todolist {
 	private boolean checked;
 	
 	
-	public todolist(int tno, String content, String tdate, boolean checked) {
+	public Todolist(int tno, String content, String tdate, boolean checked) {
 		super();
 		this.tno = tno;
 		this.content = content;
