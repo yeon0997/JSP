@@ -1,0 +1,57 @@
+#claendar_wrap {
+	width: 40%;
+}
+
+.year, .month {
+	padding: 10px;
+	font-size: 30px;
+	color: brown;
+	font-style: italic;
+	font-weight: 600;
+}
+
+table, th, td {
+	font-style: italic;
+	color: chocolate;
+	border: 1.5px solid tan;
+	border-collapse: collapse;
+}
+
+th, td {
+	width: 30px;
+	padding: 10px;
+}
+
+th:first-child, td:first-child {
+	color: coral;
+}
+
+#prev, #next {
+	display: inline-block;
+	text-decoration: none;
+	color: chocolate;
+	padding: 5px;
+	font-size: 30px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+#add {
+	width: 80px;
+    background: #9BCC9B;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: grab;	
+}
+#content {
+	 text-align:left;
+	 font-size: 20px;
+	 padding: 10px;
+	 col: 40;
+	 row: 3;
+}
+

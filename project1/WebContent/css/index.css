@@ -136,4 +136,11 @@
     margin: 4px 2px;
     cursor: grab;
 }
+#logincon {
+	width: 200px;
+	margin:10px;
+	text-align: left;
+	font-size: 20px;
+	padding: 10px;"
+}
 

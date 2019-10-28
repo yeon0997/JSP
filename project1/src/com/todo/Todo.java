@@ -1,23 +1,21 @@
-package dto;
+package com.todo;
 
-public class Todolist {
-	
-	private static final long serialVersionUID = -4274700572038677000L;
-	
+public class Todo {
+
 	private int tno;
 	private String content;
 	private String tdate;
 	private boolean checked;
-	
-	
-	public Todolist(int tno, String content, String tdate, boolean checked) {
+
+
+	public Todo(int tno, String content, String tdate, boolean checked) {
 		super();
 		this.tno = tno;
 		this.content = content;
 		this.tdate = tdate;
 		this.checked = checked;
 	}
-	
+
 	public int getTno() {
 		return tno;
 	}

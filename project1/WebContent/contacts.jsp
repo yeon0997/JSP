@@ -1,104 +1,194 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.contact.Contact"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Contacts</title>
 <link rel="stylesheet" type="text/css" href="css/index.css?v=3">
-<link rel="stylesheet" type="text/css" href="css/todo.css?v=3">
 <link rel="stylesheet" type="text/css" href="css/contacts.css?v=3">
 </head>
 <body>
 	<header>
 		<div id="header">
-			<button id="logo">Secretary</button>
+			<button id="logo" onclick="location.href='index.jsp'">Secretary</button>
 		</div>
 		<div id="nav">
-			<button class="tablink" onclick="openPage('todo', this, '#C2FFC2')">TO-DO</button>
-			<button class="tablink"
-				onclick="openPage('contacts', this, '#C2FFC2')">CONTACTS</button>
+			<button class="tablink" onclick="location.href='todo.jsp'">TO-DO</button>
+			<button class="tablink" onclick="location.href='contacts.jsp'">CONTACTS</button>
 		</div>
 	</header>
-	<section>
-
-	</section>
-<br><br>
-	    <table>
-      <thead>
-        <tr>
-          <th>Lorem</th><th>Ipsum</th><th>Dolor</th><th>Sit</th><th>Amet</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Lorem</td><td>Ipsum</td><td>Dolor</td><td>Sit</td><td>Amet</td>
-        </tr>
-        <tr>
-          <td>Lorem</td><td>Ipsum</td><td>Dolor</td><td>Sit</td><td>Amet</td>
-        </tr>
-        <tr>
-          <td>Lorem</td><td>Ipsum</td><td>Dolor</td><td>Sit</td><td>Amet</td>
-        </tr>
-        <tr>
-          <td>Lorem</td><td>Ipsum</td><td>Dolor</td><td>Sit</td><td>Amet</td>
-        </tr>
-        <tr>
-          <td>Lorem</td><td>Ipsum</td><td>Dolor</td><td>Sit</td><td>Amet</td>
-        </tr>
-        <tr>
-          <td>Lorem</td><td>Ipsum</td><td>Dolor</td><td>Sit</td><td>Amet</td>
-        </tr>
-      </tbody>
-    </table>
-    <input type="submit"  id="formlogin"  value="로그인">
+	
+	<br>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<th>NAME</th>
+				<th>NUMBER</th>
+				<th>MEMO</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<%@ include file="dbconn.jsp" %>
+			<%
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "select name, phone, memo from contacts";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while (rs.next()){
+			%>
+			<tr>
+				<td><%=rs.getString("name") %></td>
+				<td><%=rs.getString("phone") %></td>
+				<td><%=rs.getString("memo") %></td>
+			</tr>
+			<%
+				} 
+			%>
+		
+		<%
+		if(rs != null)
+			rs.close();
+		if(pstmt != null)
+			pstmt.close();
+		if(conn != null)
+			conn.close();
+		%>
+			
+		</tbody>
+	</table>
+			
+	<button id="add" onclick="addModal()">추가</button>
+	<div id="addModal" class="modal-contacts-all">
+		<!-- Modal content -->
+		<div class="modal-contacts">
+			<span class="addclose" >X</span>
+			<form id="contact1" action="add_contact.jsp" method="post">
+				<input type="text" name="name" id="inputcon" placeholder="name"><br>
+				<input type="text" name="phone" id="inputcon" placeholder="phonenumber"><br>
+				<input type="text" name="memo" id="inputcon" placeholder="memo"><br>
+				<input type="submit" id="formBtn" value="추가">
+			</form>
+		</div>
+	</div>
+	
+	<button id="modify" onclick="modifyModal()">수정</button>
+	<div id="modifyModal" class="modal-contacts-all">
+		<!-- Modal content -->
+		<div class="modal-contacts">
+			<span class="modifyclose">X</span>
+			<form action="modify_contact.jsp" method="post">
+				<input type="text" name="number" id="inputcon" placeholder="number"><br>
+				<input type="text" name="name" id="inputcon" placeholder="name"><br>
+				<input type="text" name="phone" id="inputcon" placeholder="phonenumber"><br>
+				<input type="text" name="memo" id="inputcon" placeholder="memo"><br>
+				<input type="submit" id="formBtn" value="수정">
+			</form>
+		</div>
+	</div>
+	<button id="delete" onclick="deleteModal()">삭제</button>
+	<div id="deleteModal" class="modal-contacts-all">
+		<!-- Modal content -->
+		<div class="modal-contacts">
+			<span class="deleteclose">X</span>
+			<form action="delete_contact.jsp" method="post">
+				<input type="text" name="number" id="inputcon" placeholder="number"><br>
+				<input type="submit" id="formBtn" value="삭제">
+			</form>
+		</div>
+	</div>
 
 	<!-- SCRIPT START -->
 	<script>
-        function openPage(pageName, elmnt, color) {
-            var i, tabcontent, tablinks;    
-            tabcontent = document.getElementsByClassName("tabcontent");
-                for(i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
-            tablinks = document.getElementsByClassName("tablink");
-                for(i = 0; i < tablinks.length; i++) {
-                    tablinks[i].style.backgroundColor = "";
-                }
-            document.getElementById(pageName).style.display = "block";
-            elmnt.style.backgroundColor = color;
-            }
-            //document.getElementById("defalutOpen").click();
-        //Full Page Tabs
-
-        var title = document.getElementById("title");
-        var list = document.getElementById("list");
-        var li = document.getElementsByTagName("li");
-        var addBtn = document.getElementById("add-btn");
-
-        //목록과 이벤트 리스너 연결
-        //각 목록이 선택될 때 active되어지는 것을 표기하기 위한 함수 등록
-        for(var i=0; i <li.length; i++){
-            //li[i].addEventListener('click', activeItem);
-            list.addEventListener('click', activeItem);
+        function addModal(){
+     // Get the modal
+        var modal = document.getElementById('addModal');
+ 
+        // Get the button that opens the modal
+        var btn = document.getElementById("add");
+ 
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("addclose")[0];                                          
+ 
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
         }
-
-        function activeItem(event){
-            //클릭한 노드가 li이면 
-            if(event.target.nodeName =="LI"){
-                title.innerHTML = event.target.innerText;
-
-            for(var i=0; i<event.target.parentNode.children.length; i++){
-                event.target.parentNode.children[i].removeAttribute('class');
+ 
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+ 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
         }
-            event.target.setAttribute('class', 'active');
         }
-
-        addBtn.addEventListener('click', function(){
-            var txt = prompt('할 일 입력');
-            list.innerHTML +='<li>' + txt + '</li>'
-        });
+    
+        
+        function modifyModal() {
+    	// Get the modal
+        var modal = document.getElementById('modifyModal');
+ 
+        // Get the button that opens the modal
+        var btn = document.getElementById("modify");
+ 
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("modifyclose")[0];                                          
+ 
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+ 
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+ 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        }
+        
+        function deleteModal() {
+        	// Get the modal
+            var modal = document.getElementById('deleteModal');
+     
+            // Get the button that opens the modal
+            var btn = document.getElementById("delete");
+     
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("deleteclose")[0];                                          
+     
+            // When the user clicks on the button, open the modal 
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+     
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+     
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            }
     </script>
 	<!-- SCCRIPT END -->
 
